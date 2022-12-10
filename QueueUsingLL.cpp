@@ -46,18 +46,11 @@ int main(){
     
     for(int i=0;i<n;i++){
         cin>>d;
-        head=insertEnd(head,d);
-        head=insertFront(head,d);
+        head=enqueue(head,d);
     }
     
     display(head);
-    head=insertRandom(head,6,3);
-    display(head);
-    head=deleteEnd(head);
-    display(head);
-    head=deleteFront(head);
-    display(head);
-    head=deleteRandom(head,2);
+    head=dequeue(head);
     display(head);
     
     return 0;
