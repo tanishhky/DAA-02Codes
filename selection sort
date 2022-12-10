@@ -1,0 +1,38 @@
+#include<iostream>
+
+using namespace std;
+//look for a smallest number in array and swap
+
+
+void SelectionSort(int arr[],int n){    // n is the size of the array
+    int min,temp;
+    for(int i=0;i<n-1;i++){     // for numnber of passes....n ele h toh n-1 sort hogye toh automatically last wala is at its right position
+        min=i;
+        for(int j=i+1;j<n;j++){
+            if(arr[j]<arr[min]){        // to check the ele at index with remaining ele
+                min=j;
+            }
+        }
+        temp=arr[i];
+        arr[i]=arr[min];    // for swapping
+        arr[min]=temp;
+    }
+}
+
+void print(int arr[],int n){
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+      
+    }
+}
+
+int main(){
+    int arr[]={12, 8, 32, 64, 5};
+    int n=5;
+    print(arr,n);
+    SelectionSort(arr,n);
+    cout<<"\n";
+    print(arr,n);
+
+    return 0;
+}
