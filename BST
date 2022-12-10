@@ -1,0 +1,68 @@
+#include<iostream>
+using namespace std;
+
+struct node{
+    int data;
+    struct node* left;
+    struct node* right;
+};
+
+struct node* create( int val){
+    struct node* temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    temp->data=val;
+    temp->left=temp->right=NULL;
+    return temp;
+}
+void inorder(struct node* root){
+    if(root!=NULL){
+        inorder(root->left);
+        cout<<root->data<<endl;
+        inorder(root->right);
+    }
+}
+void preorder(struct node* root){
+    if(root!=NULL){
+        cout<<root->data<<endl;
+        preorder(root->left);
+        
+        preorder(root->right);
+    }
+}
+void postorder(struct node* root){
+    if(root!=NULL){
+        postorder(root->left);
+        
+        postorder(root->right);
+        cout<<root->data<<endl;
+    }
+}
+struct node* insert(struct node* head,int key){
+    if(head==NULL){
+        return create(key);
+
+    }
+    if(key<head->data){
+        head->left=insert(head->left,key);
+    }
+    else if(key>head->data){
+        head->right=insert(head->right,key);
+    }
+    return head;
+}
+
+int main(){
+    struct node* root=NULL;
+    root=insert(root,50);
+    insert(root,30);
+    insert(root,20);
+    insert(root,40);
+    insert(root,70);
+    insert(root,60);
+    insert(root,80);
+    inorder(root);
+    cout<<"Preorder:"<<endl;
+    preorder(root);
+cout<<"Postorder"<<endl;
+    postorder(root);
+}
